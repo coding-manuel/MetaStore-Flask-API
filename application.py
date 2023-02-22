@@ -5,7 +5,7 @@ from model.predict import *
 
 app = Flask(__name__)
 
-@app.route('/api/create-texture', methods=['POST'])
+@app.route('/api/create-texture', methods=['POST', 'GET', 'DELETE'])
 def create_texture():   
     front_image = request.files["front"].read()
     back_image = request.files["back"].read()
