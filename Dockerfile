@@ -8,6 +8,10 @@
 # CMD [ "application.py" ]
 FROM tensorflow/tensorflow
 
+RUN apt-get update && apt-get install -y git-lfs
+RUN git clone https://github.com/coding-manuel/MetaStore-Flask-API.git
+RUN git lfs fetch && git lfs checkout
+
 # Copy local code to the container image.
 COPY . /app
 WORKDIR /app

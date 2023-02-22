@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/api/create-texture', methods=['POST', 'GET', 'DELETE'])
 def create_texture():   
+    print(request.files)
     front_image = request.files["front"].read()
     back_image = request.files["back"].read()
     primary_color = request.form["color"]
@@ -19,4 +20,5 @@ def create_texture():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    serve(app, host="0.0.0.0", port=port)
+    app.run(debug=True, host="0.0.0.0")
+    # serve(app, host="0.0.0.0", port=port)

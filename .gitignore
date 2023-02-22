@@ -17,7 +17,8 @@ build/
 .idea/
 docs/_build/
 .vscode
-.tflite
+*.tflite
+*.h5
 
 # Coverage reports
 htmlcov/
