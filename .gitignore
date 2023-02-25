@@ -18,7 +18,6 @@ build/
 docs/_build/
 .vscode
 *.tflite
-*.h5
 
 # Coverage reports
 htmlcov/
