@@ -21,6 +21,6 @@ def create_texture():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     git_lfs_path = 'https://github.com/coding-manuel/MetaStore-Flask-API'
-    os.system(f'git lfs install --local && git lfs fetch --all {git_lfs_path}')
+    os.system(f'apt-get install git git-lfs && git-lfs fetch --all {git_lfs_path}')
     app.run(debug=True, host="0.0.0.0")
     # serve(app, host="0.0.0.0", port=port)
