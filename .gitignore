@@ -18,7 +18,7 @@ build/
 docs/_build/
 .vscode
 *.tflite
-
+__pycache__
 # Coverage reports
 htmlcov/
 .coverage
