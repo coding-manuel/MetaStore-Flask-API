@@ -10,10 +10,12 @@ def create_texture():
     back_image = request.files["back"].read()
     primary_color = request.form["color"]
 
-    front_output = predict_h5(front_image)
-    back_output = predict_h5(back_image)
+    # front_output = predict_h5(front_image)
+    # back_output = predict_h5(back_image)
 
-    return jsonify({"front": front_output, "back" : back_output})
+    # return jsonify({"front": front_output, "back" : back_output})
+    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
+
 
 @app.route('/api/ping', methods=['GET'])
 def ping():
