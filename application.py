@@ -15,15 +15,6 @@ def create_texture():
 
     return jsonify({"front": front_output, "back" : back_output})
 
-@app.route('/api/ping', methods=['GET'])
-def ping():
-    dir = os.getcwd()   
-    print(dir)
-    dir += "//model"
-    print(os.listdir(dir))
-
-    return "erhhehe"
-
 @app.route('/')
 def index():
     return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
