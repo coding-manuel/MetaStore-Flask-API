@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-py3
+FROM tensorflow/tensorflow
 COPY . /app
 WORKDIR /app
 RUN apt-get update && apt-get install -y wget
