@@ -8,6 +8,13 @@ app = Flask(__name__)
 def main():
     st.title('Image Segmentation App')
 
+    # Add the API functionality
+    st.server.set_page_config(
+        page_title="Image Segmentation API",
+        page_icon=":guardsman:",
+        layout="wide",
+    )
+
     @st.experimental_api(allowed_methods=["POST"])
     def segment_image(file):
         front_image = request.files["front"].read()
