@@ -23,7 +23,7 @@ def dice_coef(y_true, y_pred):
 def dice_loss(y_true, y_pred):
     return 1.0 - dice_coef(y_true, y_pred)
 
-def predict():
+def predict(file):
     #Load Model
     interpreter = tf.lite.Interpreter(model_path='model/segmentation_model.tflite')
     interpreter.allocate_tensors()
@@ -37,7 +37,10 @@ def predict():
     W = 384
 
     # Set up your input data.
-    image = cv2.imread('model/test.jpg', cv2.IMREAD_COLOR)    
+    # Convert File to np array
+    file_bytes = np.fromstring(file, np.uint8)
+    # convert numpy array to image
+    image = cv2.imdecode(file_bytes, cv2.IMREAD_UNCHANGED)
 
     resized_image = cv2.resize(image, (W, H))
     x = resized_image/255.0
@@ -49,6 +52,7 @@ def predict():
     interpreter.invoke()
 
     #Geting Output
+    print("geting output")
     prediction = interpreter.get_tensor(output_details[0]['index'])[0]
 
     prediction = cv2.resize(prediction, (W, H))
@@ -63,11 +67,10 @@ def predict():
     output_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2BGRA)
     output_image[..., 3] = mask_inv
 
-    # cv2.imshow(output_image)
+    retval, buffer = cv2.imencode('.png', output_image)
+    encoded_image = base64.b64encode(buffer).decode('utf-8')
 
-    cv2.imwrite("model/output.png", output_image)
-
-    return "done"
+    return encoded_image
 
 def predict_h5(file):
     #Load Model
